@@ -11,7 +11,7 @@ insert into PATIENT_RECORDS values(	'PAT-107',	'Antoine',	'Derek',	'10-Jan-97'	,
 insert into PATIENT_RECORDS values(	'PAT-108',	'Callie',	'Hawkins',	'11-Jan-98'	,	'F',	'White',	'Non - Hispanic/Latino',	9637774949,	'HawkinsC@gmail.com',	'7A, Temont St',	'San Juan',	'PR',	'US',	92600,	'Dianne',	'Michael',	8631113838,	'MichaelD@gmail.edu',	'7A, Temont St',	'San Juan',	'PR',	'US',	92600	);
 
 
-
+---Insert PATIENT MEDICAL HISTORY---
 
 insert into PATIENT_MEDICALHISTORY values(	'MH-100',	'PAT-100',	'Fever',	'High fever 102',	'21-Apr-20',	'N',	'21-May-20');
 insert into PATIENT_MEDICALHISTORY values(	'MH-101',	'PAT-101',	'Asthama',	'Asthma since 1 year',	'20-May-20',	'Y',	NULL);
