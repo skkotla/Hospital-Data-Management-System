@@ -35,3 +35,12 @@ insert into PATIENT_MEDICATION values(	'MED-105',	'MH-100',	'PAT-105',	'Tylenol'
 insert into PATIENT_MEDICATION values(	'MED-106',	'MH-100',	'PAT-106',	'Microzide',	71,	4,	'Oral',	3,	'11-Jan-22',	NULL,	'Y'	);
 insert into PATIENT_MEDICATION values(	'MED-107',	'MH-100',	'PAT-107',	'Tylenol',	53,	1,	'Oral',	1,	'11-Jan-22','17-Jan-22',	'N'	);
 insert into PATIENT_MEDICATION values(	'MED-108',	'MH-100',	'PAT-108',	'Tylenol',	87,	4,	'Oral',	2,	'12-Jan-22',	'21-Jan-22',	'N'	);
+
+
+
+
+insert into PATIENT_INVOICE VALUES(	'BIL-100',	'PAT-100',	'12-Oct-22',200, 50,	0,	0,	0,1,	15, 132);
+insert into PATIENT_INVOICE VALUES(	'BIL-101',	'PAT-101',	'12-Jan-22',	300,	50,	0,	0,0,0, 15,	365	);
+insert into PATIENT_INVOICE VALUES(	'BIL-102',	'PAT-102',	'15-Jan-22',	450,	50,	0,	0,	0,0,	15	,	515	);
+insert into PATIENT_INVOICE VALUES(	'BIL-103',	'PAT-103',	'17-Jan-22',	400,	50,	0,	0,	0,	0,15,	232.5	);
+insert into PATIENT_INVOICE VALUES(	'BIL-104',	'PAT-104',	'18-Jan-22',	500,	50,	0,	0,	0,	1,15	,	282.5	);
