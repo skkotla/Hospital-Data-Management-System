@@ -22,3 +22,16 @@ insert into PATIENT_MEDICALHISTORY values(	'MH-105',	'PAT-105',	'Flu',	'Mild',	'
 insert into PATIENT_MEDICALHISTORY values(	'MH-106',	'PAT-106',	'Blood Pressure',	'High',	'21-Apr-20',	'Y', NULL);
 insert into PATIENT_MEDICALHISTORY values(	'MH-107',	'PAT-107',	'Cough',	'Sour throat',	'20-May-20',	'N',	'19-Jun-20');	
 insert into PATIENT_MEDICALHISTORY values(	'MH-108',	'PAT-108',	'Cough',	'Sour throat',	'10-Sep-21',	'N',	'13-Oct-21');
+
+
+
+
+insert into PATIENT_MEDICATION values(	'MED-100',	'MH-104',	'PAT-100',	'Tylenol',	282,	2,	'Oral',	2,	'2-Jan-22',	'9-Jan-22',	'N'	);
+insert into PATIENT_MEDICATION values(	'MED-101',	'MH-104',	'PAT-101',	'Metformin',	306,	3,	'Injection',	1,	'2-Jan-22',	NULL,'Y'	);
+insert into PATIENT_MEDICATION values(	'MED-102',	'MH-104',	'PAT-102',	'Tylenol',	337,	1,	'Oral',	3,	'5-Jan-22',	NULL,	'Y'	);
+insert into PATIENT_MEDICATION values(	'MED-103',	'MH-100',	'PAT-103',	'Tylenol',	242,	3,	'Oral',	1,	'7-Jan-22',	NULL,	'Y'	);
+insert into PATIENT_MEDICATION values(	'MED-104',	'MH-100',	'PAT-104',	'Metformin',	451,	2,	'Injection',	3,	'8-Jan-22',	'18-Jan-22',	'N'	);
+insert into PATIENT_MEDICATION values(	'MED-105',	'MH-100',	'PAT-105',	'Tylenol',	307,	1,	'Oral',	2,	'10-Jan-22',	'15-Jan-22',	'N'	);
+insert into PATIENT_MEDICATION values(	'MED-106',	'MH-100',	'PAT-106',	'Microzide',	71,	4,	'Oral',	3,	'11-Jan-22',	NULL,	'Y'	);
+insert into PATIENT_MEDICATION values(	'MED-107',	'MH-100',	'PAT-107',	'Tylenol',	53,	1,	'Oral',	1,	'11-Jan-22','17-Jan-22',	'N'	);
+insert into PATIENT_MEDICATION values(	'MED-108',	'MH-100',	'PAT-108',	'Tylenol',	87,	4,	'Oral',	2,	'12-Jan-22',	'21-Jan-22',	'N'	);
