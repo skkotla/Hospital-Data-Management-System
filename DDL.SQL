@@ -72,3 +72,24 @@ Responsibilities		Varchar(25)	Not Null,
 CONSTRAINT check_departname CHECK ( Department_Name IN ('Staff', 'Doctor'))
 );
 
+----CREATE TABLE STAFF RECORDS ---
+CREATE TABLE Staff (
+	Staff_ID VARCHAR(7) PRIMARY KEY
+	,Department_ID Varchar(7) REFERENCES Department(Department_ID)
+	,Staff_First_Name VARCHAR(25) NOT NULL
+	,Staff_Last_Name VARCHAR(25) NOT NULL
+	,Staff_Role VARCHAR(25) NOT NULL
+	,Staff_Level VARCHAR(25) NOT NULL
+	,Staff_Email VARCHAR(25) NOT NULL
+	,Staff_Phone_No VARCHAR(25) NOT NULL
+	,Staff_House_Street VARCHAR(25) NOT NULL
+	,Staff_City VARCHAR(25) NOT NULL
+	,Staff_State VARCHAR(25) NOT NULL
+	,Staff_Country VARCHAR(25) NOT NULL
+	,Staff_Zip_Code INTEGER NOT NULL
+        ,CONSTRAINT check_staff_phonenumber CHECK(LENGTH(Staff_Phone_No )=10)
+        ,CONSTRAINT check_staff_email CHECK (REGEXP_LIKE (Staff_Email , '^\w+(\.\w+)*+@\w+(\.\w+)+$') )
+        ,CONSTRAINT check_staff_zipcode CHECK (LENGTH(Staff_Zip_Code)=10)
+	);
+
+
