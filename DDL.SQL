@@ -89,7 +89,7 @@ CREATE TABLE Staff (
 	,Staff_Zip_Code INTEGER NOT NULL
         ,CONSTRAINT check_staff_phonenumber CHECK(LENGTH(Staff_Phone_No )=10)
         ,CONSTRAINT check_staff_email CHECK (REGEXP_LIKE (Staff_Email , '^\w+(\.\w+)*+@\w+(\.\w+)+$') )
-        ,CONSTRAINT check_staff_zipcode CHECK (LENGTH(Staff_Zip_Code)=10)
+        ,CONSTRAINT check_staff_zipcode CHECK (LENGTH(Staff_Zip_Code)=5)
 	);
 	
 ----CREATE TABLE DOCTORS RECORDS ---
