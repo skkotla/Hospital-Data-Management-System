@@ -63,3 +63,12 @@ CREATE TABLE Patient_Records(
         
 );
 
+---CREATE TABLE DEPARTMENT RECORDS ---
+
+CREATE TABLE Department (	
+Department_ID	Varchar(7)	Primary Key,
+Department_Name	Varchar(25)	Not Null,
+Responsibilities		Varchar(25)	Not Null,
+CONSTRAINT check_departname CHECK ( Department_Name IN ('Staff', 'Doctor'))
+);
+
