@@ -1,5 +1,5 @@
 
-
+---Insert Patient Records---
 insert into PATIENT_RECORDS values(	'PAT-100',	'Rosella',	'Burks',	'5-Jan-90'	,	'F',	'White',	'Non - Hispanic/Latino',	9637774065	, 'BurksR@gmail.com',	'16C, Smith St',	'San Juan',	'PR',	'US',	92600,	'Patrica',	'Garrison',	8631113065	,'GarrisonP@gmail.edu',	'16C, Smith St',	'San Juan',	'PR',	'US',	92600	);
 insert into PATIENT_RECORDS values(	'PAT-101',	'Damien',	'Avila',	'6-Jan-91'	,	'M',	'White',	'Non - Hispanic/Latino',	9637777914,	'AvilaD@gmail.com',	'17A, Termont St',	'Corona',	'NY',	'US',	11368,	'Leila',	'Effie',	8631111813,	'EffieL@gmail.edu',	'17A, Termont St',	'Corona',	'NY',	'US',	11368	);
 insert into PATIENT_RECORDS values(	'PAT-102',	'Robin',	'Olsen',	'7-Jan-92'	,	'M',	'Asian American',	'Non - Hispanic/Latino',	9637779262,	'OlsenR@gmail.com',	'1, James St',	'Chicago',	'IL',	'US',	60629,	'Rose',	'Buckley',	8631118262,	'BuckleyR@gmail.edu',	'1, James St',	'Chicago',	'IL',	'US',	60629	);
