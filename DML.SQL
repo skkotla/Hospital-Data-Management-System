@@ -9,3 +9,16 @@ insert into PATIENT_RECORDS values(	'PAT-105',	'Elvin',	'Claude',	'9-Jan-95'	,	'
 insert into PATIENT_RECORDS values(	'PAT-106',	'Edmund',	'Mosley',	'10-Jan-96'	,	'M',	'Asian American',	'Hispanic/Latino',	9637779285,	'MosleyE@gmail.com',	'87A, Harper St',	'Pacoima',	'CA',	'US',	91331,	'Nellie',	'Brady',	8631118285,	'BradyN@gmail.edu',	'87A, Harper St',	'Pacoima',	'CA',	'US',	91331	);
 insert into PATIENT_RECORDS values(	'PAT-107',	'Antoine',	'Derek',	'10-Jan-97'	,	'M',	'White',	'Non - Hispanic/Latino',	9637775454,	'DerekA@gmail.com',	'8, James St',	'Ketchikan',	'AK',	'US',	99950,	'Ruben',	'Katheryn',	8631115353,	'KatherynR@gmail.edu',	'8, James St',	'Ketchikan',	'AK',	'US',	99950	);
 insert into PATIENT_RECORDS values(	'PAT-108',	'Callie',	'Hawkins',	'11-Jan-98'	,	'F',	'White',	'Non - Hispanic/Latino',	9637774949,	'HawkinsC@gmail.com',	'7A, Temont St',	'San Juan',	'PR',	'US',	92600,	'Dianne',	'Michael',	8631113838,	'MichaelD@gmail.edu',	'7A, Temont St',	'San Juan',	'PR',	'US',	92600	);
+
+
+
+
+insert into PATIENT_MEDICALHISTORY values(	'MH-100',	'PAT-100',	'Fever',	'High fever 102',	'21-Apr-20',	'N',	'21-May-20');
+insert into PATIENT_MEDICALHISTORY values(	'MH-101',	'PAT-101',	'Asthama',	'Asthma since 1 year',	'20-May-20',	'Y',	NULL);
+insert into PATIENT_MEDICALHISTORY values(	'MH-102',	'PAT-102',	'Cold',	'Mild',	'10-Sep-21',	'N',	'13-Oct-21');	
+insert into PATIENT_MEDICALHISTORY values(	'MH-103',	'PAT-103',	'Cold',	'High',	'1-Jan-20',	'N',	'2-Feb-20');	
+insert into PATIENT_MEDICALHISTORY values(	'MH-104',	'PAT-104',	'Anemia',	'For last 2 years',	'4-Mar-19',	'Y',	NULL);
+insert into PATIENT_MEDICALHISTORY values(	'MH-105',	'PAT-105',	'Flu',	'Mild',	'6-Jun-20',	'N',	'9-Jul-20');	
+insert into PATIENT_MEDICALHISTORY values(	'MH-106',	'PAT-106',	'Blood Pressure',	'High',	'21-Apr-20',	'Y', NULL);
+insert into PATIENT_MEDICALHISTORY values(	'MH-107',	'PAT-107',	'Cough',	'Sour throat',	'20-May-20',	'N',	'19-Jun-20');	
+insert into PATIENT_MEDICALHISTORY values(	'MH-108',	'PAT-108',	'Cough',	'Sour throat',	'10-Sep-21',	'N',	'13-Oct-21');
