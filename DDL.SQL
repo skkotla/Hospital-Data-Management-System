@@ -91,5 +91,30 @@ CREATE TABLE Staff (
         ,CONSTRAINT check_staff_email CHECK (REGEXP_LIKE (Staff_Email , '^\w+(\.\w+)*+@\w+(\.\w+)+$') )
         ,CONSTRAINT check_staff_zipcode CHECK (LENGTH(Staff_Zip_Code)=10)
 	);
+	
+----CREATE TABLE DOCTORS RECORDS ---
+    
+CREATE TABLE Doctor_Records (
+	Doctor_ID Varchar(7) PRIMARY KEY
+	,Department_ID Varchar(7) REFERENCES Department(Department_ID)
+	,Doctor_First_Name VARCHAR(25) NOT NULL
+	,Doctor_Last_Name VARCHAR(25) NOT NULL
+	,Specialization VARCHAR(25) NOT NULL
+	,Designation VARCHAR(25) NOT NULL
+	,Doctor_Email VARCHAR(25) NOT NULL
+	,Doctor_Phone_No VARCHAR(25) NOT NULL
+	,Doctor_Charge INTEGER NOT NULL
+	,Doctor_House_Street VARCHAR(25) NOT NULL
+	,Doctor_City VARCHAR(25) NOT NULL
+	,Doctor_State VARCHAR(25) NOT NULL
+	,Doctor_Country VARCHAR(25) NOT NULL
+	,Doctor_Zip_Code INTEGER NOT NULL
+        ,CONSTRAINT check_doctor_phonenumber CHECK(LENGTH(Doctor_Phone_No )=10)
+        ,CONSTRAINT check_doctor_email CHECK (REGEXP_LIKE (Doctor_Email , '^\w+(\.\w+)*+@\w+(\.\w+)+$') )
+        ,CONSTRAINT check_doctor_zipcode CHECK (LENGTH(Doctor_Zip_Code)=10)
+        ,CONSTRAINT check_doctor_charge CHECK (Doctor_Charge >=0)
+	);
+
+
 
 
