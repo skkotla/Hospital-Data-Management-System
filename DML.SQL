@@ -24,7 +24,7 @@ insert into PATIENT_MEDICALHISTORY values(	'MH-107',	'PAT-107',	'Cough',	'Sour t
 insert into PATIENT_MEDICALHISTORY values(	'MH-108',	'PAT-108',	'Cough',	'Sour throat',	'10-Sep-21',	'N',	'13-Oct-21');
 
 
-
+--Insert PATIENT MEDICATION--
 
 insert into PATIENT_MEDICATION values(	'MED-100',	'MH-104',	'PAT-100',	'Tylenol',	282,	2,	'Oral',	2,	'2-Jan-22',	'9-Jan-22',	'N'	);
 insert into PATIENT_MEDICATION values(	'MED-101',	'MH-104',	'PAT-101',	'Metformin',	306,	3,	'Injection',	1,	'2-Jan-22',	NULL,'Y'	);
@@ -37,7 +37,7 @@ insert into PATIENT_MEDICATION values(	'MED-107',	'MH-100',	'PAT-107',	'Tylenol'
 insert into PATIENT_MEDICATION values(	'MED-108',	'MH-100',	'PAT-108',	'Tylenol',	87,	4,	'Oral',	2,	'12-Jan-22',	'21-Jan-22',	'N'	);
 
 
-
+--Insert PATIENT INVOICE--
 
 insert into PATIENT_INVOICE VALUES(	'BIL-100',	'PAT-100',	'12-Oct-22',200, 50,	0,	0,	0,1,	15, 132);
 insert into PATIENT_INVOICE VALUES(	'BIL-101',	'PAT-101',	'12-Jan-22',	300,	50,	0,	0,0,0, 15,	365	);
