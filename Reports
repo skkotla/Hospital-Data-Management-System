@@ -15,3 +15,12 @@ FROM Patient_Treatment Treatment, Patient_Visit Visit
 WHERE Treatment.Visit_Id = Visit.Visit_Id
 group by Treatment.Treatment
 order by  2 desc;
+
+
+
+
+SELECT Doctor.Doctor_First_Name || ' ' || Doctor.Doctor_Last_Name as DOCTOR, COUNT(Treatment.patient_id) number_of_patients
+FROM Patient_Treatment Treatment, Doctor_Records Doctor  
+WHERE Treatment.Doctor_Id = Doctor.Doctor_Id
+group by Doctor.Doctor_First_Name || ' ' || Doctor.Doctor_Last_Name 
+order by  2 desc;
