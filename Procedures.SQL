@@ -170,3 +170,80 @@ DBMS_OUTPUT.PUT_LINE(SQLERRM);
 END update_patient_information;
 
 
+-------HIRE DOCTOR---------
+CREATE OR REPLACE PROCEDURE hire_doctor
+(
+Doctor_ID VARCHAR,
+Doctor_First_Name VARCHAR
+,Doctor_Last_Name VARCHAR
+,Specialization VARCHAR
+,Designation VARCHAR
+,Doctor_Email VARCHAR
+,Doctor_Phone_No VARCHAR
+,Doctor_Charge INTEGER
+,Doctor_House_Street VARCHAR
+,Doctor_City VARCHAR
+,Doctor_State VARCHAR
+,Doctor_Country VARCHAR
+,Doctor_Zip_Code INTEGER
+,Doctor_Status VARCHAR
+)
+IS
+EMAIL_INC EXCEPTION;
+PHONE_INC EXCEPTION;
+department_id NUMBER;
+
+
+BEGIN
+
+DBMS_OUTPUT.PUT_LINE('--------------------------------------------HIRING DOCTOR--------------------------------------------');
+
+
+BEGIN
+SELECT Department_ID INTO department_id FROM DEPARTMENT WHERE Department_ID = 'D-101';
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+DBMS_OUTPUT.PUT_LINE('Department - ' || department_id || ' is not present');
+RETURN;
+END;
+
+-- SELECT TO_NUMBER(TO_CHAR(sysdate,'yyyy')) INTO pyear FROM DUAL;
+
+IF NOT REGEXP_LIKE (Doctor_Email,'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$') THEN
+RAISE EMAIL_INC;
+ELSIF NOT REGEXP_LIKE (Doctor_Phone_No,'[[:digit:]]{10}') THEN
+RAISE PHONE_INC;
+
+ELSE
+INSERT INTO DOCTOR_RECORDS
+VALUES (
+
+Doctor_ID
+,Department_ID
+,Doctor_First_Name
+,Doctor_Last_Name
+,Specialization
+,Designation
+,Doctor_Email
+,Doctor_Phone_No
+,Doctor_Charge
+,Doctor_House_Street
+,Doctor_City
+,Doctor_State
+,Doctor_Country
+,Doctor_Zip_Code
+,Doctor_Status );
+
+DBMS_OUTPUT.PUT_LINE('DOCTOR - ' || DOCTOR_ID || ' successfully hired');
+COMMIT;
+END IF;
+EXCEPTION
+WHEN EMAIL_INC THEN
+DBMS_OUTPUT.PUT_LINE('Please enter correct email address');
+WHEN PHONE_INC THEN
+DBMS_OUTPUT.PUT_LINE('Please enter correct 10 digit phone number');
+
+
+END hire_doctor;
+
+
