@@ -8,3 +8,10 @@ SELECT count(1) as number_of_appointments, appointment.Doctor_Id  as app_doc_id
     order by 1 desc),  Doctor_Records  doctor
 WHERE app_doc_id = doctor.Doctor_id
 AND ROWNUM < 2;
+
+
+SELECT Treatment.Treatment, COUNT(visit.patient_id) number_of_patients
+FROM Patient_Treatment Treatment, Patient_Visit Visit  
+WHERE Treatment.Visit_Id = Visit.Visit_Id
+group by Treatment.Treatment
+order by  2 desc;
