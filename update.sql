@@ -7,3 +7,6 @@ update patient_treatment set treatment = 'Biopsy' where doctor_id='DOC-106';
 update patient_treatment set treatment = 'Lapro' where doctor_id='DOC-107';
 select * from doctor_records;
 update doctor_records set doctor_status = 'Available' where doctor_id='DOC-100';
+
+
+update doctor_records set doctor_status = 'Available' where doctor_id='DOC-101';
