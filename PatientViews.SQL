@@ -1,4 +1,3 @@
-
 -------View to check patient visits-------
 
 CREATE OR REPLACE VIEW PATIENT_VISITS AS
@@ -79,7 +78,7 @@ Heart_Rate,
 Height_cms,
 Weight_kgs,
 Comments,
-Vitals_Date_Time,
+Vitals_Date_Time
 FROM Patient_Records Patient, Patient_VitalSigns Vitals
 WHERE
 Vitals.patient_id = Patient.patient_id
@@ -91,7 +90,7 @@ select * from PATIENT_VITALS;
 
 -------View patients treament details -------
 
-CREATE OR REPLACE VIEW PATIENT_TREATMENT AS
+CREATE OR REPLACE VIEW PATIENT_TREATMENTS AS
 SELECT patient.patient_id,
 Patient.PATIENT_FIRST_NAME || ' ' || Patient.PATIENT_LAST_NAME as Patient_Name,
 floor(months_between(trunc(sysdate),patient.Date_of_Birth )/12) as age, 
@@ -111,7 +110,7 @@ WHERE
 Treatment.Patient_ID = Patient.Patient_id
 AND Treatment.Doctor_ID = Doctor.Doctor_id;
 
-select * from PATIENT_TREATMENT;
+select * from PATIENT_TREATMENTS;
 
 -------View patients billing details -------
 CREATE OR REPLACE VIEW View_Patients_Billing AS
