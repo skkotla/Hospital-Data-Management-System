@@ -170,6 +170,13 @@ DBMS_OUTPUT.PUT_LINE(SQLERRM);
 END update_patient_information;
 
 
+SET SERVEROUTPUT ON;
+
+EXECUTE update_patient_information('PAT-117',	'Zhang',	'Wright',	'11-Nov-98'	,	'M',	'White',	'Non - Hispanic/Latino',	7636789023,	'ZhangW@gmail.com',	'8A, Temp St',	'Dallas',	'TX',	'US',	90003,	'Dean',	'Hope',	6631413838,	'Hope@gmail.edu',	'7A, Temp St',	'Dallas',	'TX',	'US',	90003	); 
+
+SELECT * FROM PATIENT_RECORDS;
+
+
 -------HIRE DOCTOR---------
 CREATE OR REPLACE PROCEDURE hire_doctor
 (
