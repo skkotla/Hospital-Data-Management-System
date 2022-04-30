@@ -1,1 +1,172 @@
 
+CREATE OR REPLACE PROCEDURE update_patient_information
+( Pat_id IN VARCHAR
+,Pat_First_Name IN VARCHAR
+,Pat_Last_Name IN VARCHAR
+,D_O_B IN DATE
+,Gen IN VARCHAR
+,Race IN VARCHAR
+,Ethinicity IN VARCHAR
+,Phoneno IN INTEGER
+,Email IN VARCHAR
+,HouseStreet IN VARCHAR
+,City IN VARCHAR
+,State IN VARCHAR
+,Country IN VARCHAR
+,Zip IN INTEGER
+,EmergencyContactFirst_Name IN VARCHAR
+,EmergencyContactStart_Name IN VARCHAR
+,EmergencyContactPhone IN INTEGER
+,EmergencyContactEmail IN VARCHAR
+,EmergencyContactStreet IN VARCHAR
+,EmergencyContactCity IN VARCHAR
+,EmergencyContactState IN VARCHAR
+,EmergencyContactCountry IN VARCHAR
+,EmergencyContactZipcode IN INTEGER )
+IS
+s_pat PATIENT_RECORDS%ROWTYPE;
+updateno NUMBER := 0;
+GENDER_INCORRECT EXCEPTION;
+STATE_INCORRECT EXCEPTION;
+EMAIL_INCORRECT EXCEPTION;
+PHONE_INCORRECT EXCEPTION;
+--pati_id NUMBER;
+NO_INPUT_TO_UPDATE EXCEPTION;
+BEGIN
+DBMS_OUTPUT.PUT_LINE('--------------------------------------------UPDATING PATIENT DETAILS--------------------------------------------');
+BEGIN
+SELECT * INTO s_pat FROM PATIENT_RECORDS WHERE patient_id = Pat_id;
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+DBMS_OUTPUT.PUT_LINE('Patient - ' || Pat_id || ' not found in the sytem');
+RETURN;
+END;
+IF Gen IS NOT NULL THEN
+IF Gen NOT IN ('M','F','NA') THEN
+RAISE GENDER_INCORRECT;
+END IF;
+s_pat.Gender := Gen;
+updateno := 1;
+END IF;
+IF State IS NOT NULL THEN
+IF LENGTH(State)>2 THEN
+RAISE STATE_INCORRECT;
+END IF;
+s_pat.State := State;
+updateno := 1;
+END IF;
+IF Email IS NOT NULL THEN
+IF NOT REGEXP_LIKE (Email,'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$') THEN
+RAISE EMAIL_INCORRECT;
+END IF;
+s_pat.Email := Email;
+updateno := 1;
+END IF;
+IF Phoneno IS NOT NULL THEN
+IF NOT REGEXP_LIKE (Phoneno,'[[:digit:]]{10}') THEN
+RAISE PHONE_INCORRECT;
+END IF;
+s_pat.Phone_No := Phoneno;
+updateno := 1;
+END IF;
+--IF PRIM_C_DOC IS NOT NULL THEN
+--SELECT doctor_id INTO doc_id FROM DOCTOR WHERE doctor_id = PRIM_C_DOC;
+--s_pat.PRIM_CARE_DOC_ID := PRIM_C_DOC;
+--updateno := 1;
+--END IF;
+IF Pat_First_Name IS NOT NULL THEN
+s_pat.Patient_First_Name := Pat_First_Name;
+updateno := 1;
+END IF;
+IF Pat_Last_Name IS NOT NULL THEN
+s_pat.Patient_Last_Name := Pat_Last_Name;
+updateno := 1;
+END IF;
+IF D_O_B IS NOT NULL THEN
+s_pat.Date_of_Birth := D_O_B;
+updateno := 1;
+END IF;
+IF Race IS NOT NULL THEN
+s_pat.Race := Race;
+updateno := 1;
+END IF;
+IF Ethinicity IS NOT NULL THEN
+s_pat.Ethinicity := Ethinicity;
+updateno := 1;
+END IF;
+IF HouseStreet IS NOT NULL THEN
+s_pat.House_Street := HouseStreet;
+updateno := 1;
+END IF;
+IF City IS NOT NULL THEN
+s_pat.City := City;
+updateno := 1;
+END IF;
+IF Country IS NOT NULL THEN
+s_pat.Country := Country;
+updateno := 1;
+END IF;IF Zip IS NOT NULL THEN
+s_pat.Zip_Code := Zip;
+updateno := 1;
+END IF;
+IF EmergencyContactFirst_Name IS NOT NULL THEN
+s_pat.Emergency_Contact_First_Name := EmergencyContactFirst_Name;
+updateno := 1;
+END IF;
+IF EmergencyContactStart_Name IS NOT NULL THEN
+s_pat.Emergency_Contact_Start_Name := EmergencyContactStart_Name;
+updateno := 1;
+END IF;
+IF EmergencyContactPhone IS NOT NULL THEN
+s_pat.Emergency_Contact_Phone := EmergencyContactPhone;
+updateno := 1;
+END IF;
+IF EmergencyContactEmail IS NOT NULL THEN
+s_pat.Emergency_Contact_Email := EmergencyContactEmail;
+updateno := 1;
+END IF;
+IF EmergencyContactStreet IS NOT NULL THEN
+s_pat.Emergency_Contact_Street := EmergencyContactStreet;
+updateno := 1;
+END IF;
+IF EmergencyContactCity IS NOT NULL THEN
+s_pat.Emergency_Contact_City := EmergencyContactCity;
+updateno := 1;
+END IF;
+IF EmergencyContactState IS NOT NULL THEN
+s_pat.Emergency_Contact_State := EmergencyContactState;
+updateno := 1;
+END IF;
+IF EmergencyContactCountry IS NOT NULL THEN
+s_pat.Emergency_Contact_Country := EmergencyContactCountry;
+updateno := 1;
+END IF;
+IF EmergencyContactZipcode IS NOT NULL THEN
+s_pat.Emergency_Contact_Zip_code := EmergencyContactZipcode;
+updateno := 1;
+END IF;
+IF updateno = 0 THEN
+RAISE NO_INPUT_TO_UPDATE;
+ELSE
+UPDATE PATIENT_RECORDS SET ROW = s_pat WHERE patient_id = Pat_id;
+DBMS_OUTPUT.PUT_LINE('Patient - ' || Pat_id || ' updated successfully ');
+COMMIT;
+END IF;
+EXCEPTION
+WHEN GENDER_INCORRECT THEN
+DBMS_OUTPUT.PUT_LINE('Wrong input - Only supported GENDER by system - M/F/NA');
+WHEN STATE_INCORRECT THEN
+DBMS_OUTPUT.PUT_LINE('Wrong input - Please enter 2 character STATE code');
+WHEN EMAIL_INCORRECT THEN
+DBMS_OUTPUT.PUT_LINE('Wrong input - Please enter emailId in correct format');
+WHEN PHONE_INCORRECT THEN
+DBMS_OUTPUT.PUT_LINE('Wrong input - Please enter a 10 digit phone number');
+--WHEN NO_DATA_FOUND THEN
+--DBMS_OUTPUT.PUT_LINE('Wrong input - Primary care doctor not found in system');
+WHEN NO_INPUT_TO_UPDATE THEN
+DBMS_OUTPUT.PUT_LINE('No input fields to Update');
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(SQLERRM);
+END update_patient_information;
+
+
