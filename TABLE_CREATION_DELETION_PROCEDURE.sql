@@ -66,7 +66,7 @@ call delete_table('STAFF','TABLE');
 
 CREATE TABLE Staff (
 	Staff_ID VARCHAR(7) PRIMARY KEY
-	,Department_ID Varchar(7) REFERENCES Department(Department_ID)
+	,Department_ID Varchar(7) REFERENCES Department(Department_ID) ON DELETE CASCADE
 	,Staff_First_Name VARCHAR(25) NOT NULL
 	,Staff_Last_Name VARCHAR(25) NOT NULL
 	,Staff_Role VARCHAR(25) NOT NULL
@@ -87,7 +87,7 @@ call delete_table('DOCTOR_RECORDS','TABLE');
     
 CREATE TABLE Doctor_Records (
 	Doctor_ID Varchar(7) PRIMARY KEY
-	,Department_ID Varchar(7) REFERENCES Department(Department_ID)
+	,Department_ID Varchar(7) REFERENCES Department(Department_ID) ON DELETE CASCADE
 	,Doctor_First_Name VARCHAR(25) NOT NULL
 	,Doctor_Last_Name VARCHAR(25) NOT NULL
 	,Specialization VARCHAR(25) NOT NULL
@@ -112,7 +112,7 @@ call delete_table('PATIENT_INVOICE','TABLE');
     
 CREATE TABLE Patient_Invoice (
 	Bill_ID VARCHAR(7) PRIMARY KEY
-	,Patient_ID	Varchar(7)	REFERENCES Patient_Records(Patient_ID)
+	,Patient_ID	Varchar(7)	REFERENCES Patient_Records(Patient_ID) ON DELETE CASCADE
 	,Payment_Date Date NOT NULL
 	,Doctor_Charge INTEGER NOT NULL
 	,Nurse_Charge INTEGER NOT NULL
@@ -128,7 +128,7 @@ call delete_table('PATIENT_MEDICALHISTORY','TABLE');
     
 CREATE TABLE Patient_MedicalHistory (
 	MedicalHistory_ID VARCHAR(10) PRIMARY KEY
-	,Patient_ID	Varchar(7)	REFERENCES Patient_Records(Patient_ID)
+	,Patient_ID	Varchar(7)	REFERENCES Patient_Records(Patient_ID) ON DELETE CASCADE
 	,Medical_History_Term VARCHAR(25) NOT NULL
 	,Medical_History_Description VARCHAR(100) NOT NULL
 	,Medical_History_Start_Date DATE NOT NULL
@@ -144,7 +144,7 @@ call delete_table('PATIENT_MEDICATION','TABLE');
     
 CREATE TABLE Patient_Medication (
 	Medication_ID Varchar(7) PRIMARY KEY 
-    ,MedicalHistory_ID Varchar(7) REFERENCES Patient_MedicalHistory(MedicalHistory_ID)
+    ,MedicalHistory_ID Varchar(7) REFERENCES Patient_MedicalHistory(MedicalHistory_ID) ON DELETE CASCADE
 	,Patient_ID	Varchar(7)	REFERENCES Patient_Records(Patient_ID)
 	,Medications VARCHAR(25) NOT NULL
 	,Medication_Dose INTEGER NULL
@@ -165,8 +165,8 @@ call delete_table('PATIENT_VISIT','TABLE');
 
 CREATE TABLE Patient_Visit (
 	 Visit_ID VARCHAR(7) PRIMARY KEY
-	,Patient_ID VARCHAR(7) REFERENCES Patient_Records(Patient_ID)
-	,Doctor_ID VARCHAR(7) REFERENCES Doctor_Records(Doctor_ID)
+	,Patient_ID VARCHAR(7) REFERENCES Patient_Records(Patient_ID) ON DELETE CASCADE
+	,Doctor_ID VARCHAR(7) REFERENCES Doctor_Records(Doctor_ID) ON DELETE CASCADE
 	,Diagnostic_Details VARCHAR(200) NOT NULL
 	,Visit_Date DATE NOT NULL
     --CONSTRAINT check_Visit_Date CHECK(Visit_Date < Sys_Date)
@@ -176,9 +176,9 @@ call delete_table('PATIENT_VITALSIGNS','TABLE');
 
 CREATE TABLE Patient_VitalSigns (
 	Vital_ID VARCHAR(7) PRIMARY KEY,
-    Patient_ID	Varchar(7)	REFERENCES Patient_Records(Patient_ID)
-    ,Staff_ID	Varchar(7)	REFERENCES Staff(Staff_ID)
-    ,Visit_ID	Varchar(7)	REFERENCES Patient_Visit(Visit_ID)
+    Patient_ID	Varchar(7)	REFERENCES Patient_Records(Patient_ID) ON DELETE CASCADE
+    ,Staff_ID	Varchar(7)	REFERENCES Staff(Staff_ID) ON DELETE CASCADE
+    ,Visit_ID	Varchar(7)	REFERENCES Patient_Visit(Visit_ID) ON DELETE CASCADE
 	,Systolic_Blood_Pressure INTEGER NOT NULL
 	,Diastolic_Blood_Pressure INTEGER NOT NULL
 	,Heart_Rate INTEGER NOT NULL
@@ -195,9 +195,9 @@ CREATE TABLE Patient_LabTest (
 	Test_ID VARCHAR(7) PRIMARY KEY
 	,Test_Name VARCHAR(25) NOT NULL
 	,Test_Description VARCHAR(200) NOT NULL
-	,Patient_ID Varchar(7)	REFERENCES Patient_Records(Patient_ID)
-	,Doctor_ID VARCHAR(7)  REFERENCES Doctor_Records(Doctor_ID)
-	,Visit_ID  Varchar(7)	REFERENCES Patient_Visit(Visit_ID)
+	,Patient_ID Varchar(7)	REFERENCES Patient_Records(Patient_ID) ON DELETE CASCADE
+	,Doctor_ID VARCHAR(7)  REFERENCES Doctor_Records(Doctor_ID) ON DELETE CASCADE
+	,Visit_ID  Varchar(7)	REFERENCES Patient_Visit(Visit_ID) ON DELETE CASCADE
 	,Test_Result  VARCHAR(25) NOT NULL
 	,Test_Comments VARCHAR(200) NOT NULL
 	,Test_Center  VARCHAR(100) NOT NULL
@@ -212,9 +212,9 @@ call delete_table('PATIENT_TREATMENT','TABLE');
     
 CREATE TABLE Patient_Treatment (
 Treatment_ID Varchar(7)	Primary Key,
-Patient_ID	Varchar(7)	REFERENCES PATIENT_RECORDS(Patient_ID),
-Doctor_ID	Varchar(7)	REFERENCES DOCTOR_RECORDS(Doctor_ID),
-Visit_ID	Varchar(7)	REFERENCES Patient_Visit(Visit_ID),
+Patient_ID	Varchar(7)	REFERENCES PATIENT_RECORDS(Patient_ID) ON DELETE CASCADE ,
+Doctor_ID	Varchar(7)	REFERENCES DOCTOR_RECORDS(Doctor_ID) ON DELETE CASCADE ,
+Visit_ID	Varchar(7)	REFERENCES Patient_Visit(Visit_ID) ON DELETE CASCADE ,
 Treatment_End_Date	Date	Null,
 Treatment_Start_Date	Date	Not Null,
 Ongoing_Flag	Varchar(2)	Null,
@@ -239,12 +239,14 @@ call delete_table('ROOM_DETAILS','TABLE');
 
 CREATE TABLE Room_Details (
 	 Room_ID VARCHAR(7) PRIMARY KEY
-	,Patient_ID	Varchar(7)	REFERENCES Patient_Records(Patient_ID) 
-	,Visit_ID	Varchar(7)	REFERENCES Patient_Visit(Visit_ID)
+	,Patient_ID	Varchar(7)	REFERENCES Patient_Records(Patient_ID) ON DELETE CASCADE
+	,Visit_ID	Varchar(7)	REFERENCES Patient_Visit(Visit_ID) ON DELETE CASCADE
 	,Room_Start_Date DATE NOT NULL
 	,Room_End_Date DATE NULL
 	,Room_Daily_Charge FLOAT NOT NULL
 	,No_of_Days INTEGER NOT NULL
 	,Room_Charge INTEGER NULL
+	,Room_Status VARCHAR(7) NULL
     ,CONSTRAINT check_Room_Charge CHECK(Room_Charge >=0)
+	
 	);
