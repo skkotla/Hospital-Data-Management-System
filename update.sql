@@ -10,3 +10,6 @@ update doctor_records set doctor_status = 'Available' where doctor_id='DOC-100';
 
 
 update doctor_records set doctor_status = 'Available' where doctor_id='DOC-101';
+
+
+update doctor_records set doctor_status = 'Available' where doctor_id='DOC-102';
