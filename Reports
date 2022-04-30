@@ -9,7 +9,7 @@ SELECT count(1) as number_of_appointments, appointment.Doctor_Id  as app_doc_id
 WHERE app_doc_id = doctor.Doctor_id
 AND ROWNUM < 2;
 
-
+---No. of patients in a Treatment Category---
 SELECT Treatment.Treatment, COUNT(visit.patient_id) number_of_patients
 FROM Patient_Treatment Treatment, Patient_Visit Visit  
 WHERE Treatment.Visit_Id = Visit.Visit_Id
