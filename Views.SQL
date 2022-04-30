@@ -1,10 +1,18 @@
+
+-------View to check patient visits-------
+
 CREATE OR REPLACE VIEW PATIENT_VISITS AS
-
-
-
-SELECT doctor.doctor_id, 'Dr.' || doctor.doctor_first_name || ' ' || doctor.doctor_last_name as Doctor_Name,
-Patient.PATIENT_ID, Patient.PATIENT_FIRST_NAME || ' ' || Patient.PATIENT_LAST_NAME as Patient_Name, Treatment.Treatment,
+SELECT
+Patient.PATIENT_ID, 
+Patient.PATIENT_FIRST_NAME || ' ' || Patient.PATIENT_LAST_NAME as Patient_Name,
+Patient.Gender,
+floor(months_between(trunc(sysdate),patient.Date_of_Birth )/12) as Age,
+visits.Visit_ID as Visit_ID,
+visits.diagnostic_details,
 TO_CHAR(Visits.Visit_Date ,'DD-MON-YYYY HH24:MI') Visit_date,
+Treatment.Treatment,
+doctor.doctor_id, 'Dr.' || doctor.doctor_first_name || ' ' || doctor.doctor_last_name as Doctor_Name,
+doctor.specialization,
 TO_CHAR(Treatment.Treatment_Start_Date ,'DD-MON-YYYY HH24:MI') Treatment_start_date,
 Ongoing_Flag,
 TO_CHAR(Treatment.Treatment_End_Date ,'DD-MON-YYYY HH24:MI') Treatment_end_date
@@ -14,16 +22,15 @@ AND Visits.Patient_id = Patient.Patient_id
 AND Treatment.Patient_ID = Patient.Patient_id
 order by Visits.Visit_Date;
 
-
-
 select * from PATIENT_VISITS;
 
+-------View to check medical history of the patients -------
 
--- All Patients Medical History View
 CREATE OR REPLACE VIEW PATIENT_MEDICAL_HISTORY AS
 SELECT patient.patient_id,
 Patient.PATIENT_FIRST_NAME || ' ' || Patient.PATIENT_LAST_NAME as Patient_Name,
-floor(months_between(trunc(sysdate),patient.Date_of_Birth )/12) as age, Patient.gender,
+floor(months_between(trunc(sysdate),patient.Date_of_Birth )/12) as age, 
+Patient.gender,
 'Dr.' || doctor.doctor_first_name || ' ' || doctor.doctor_last_name as case_doctor,
 Medical_History_Term,
 Medical_History_Description,
@@ -36,11 +43,13 @@ AND Treatment.Patient_ID = Patient.Patient_id
 AND Treatment.Doctor_ID = Doctor.Doctor_id;
 select * from PATIENT_MEDICAL_HISTORY;
 
+-------View to check on going medication of the patients -------
 
 CREATE OR REPLACE VIEW PATIENT_MEDICATIONS AS
 SELECT patient.patient_id,
 Patient.PATIENT_FIRST_NAME || ' ' || Patient.PATIENT_LAST_NAME as Patient_Name,
-floor(months_between(trunc(sysdate),patient.Date_of_Birth )/12) as age, Patient.gender,
+floor(months_between(trunc(sysdate),patient.Date_of_Birth )/12) as age, 
+Patient.gender,
 'Dr.' || doctor.doctor_first_name || ' ' || doctor.doctor_last_name as case_doctor,
 Medications ,
 Medication_Dose,
@@ -63,13 +72,14 @@ Select * from PATIENT_MEDICATIONS ;
 CREATE OR REPLACE VIEW PATIENT_VITALS AS
 select patient.patient_id,
 Patient.PATIENT_FIRST_NAME || ' ' || Patient.PATIENT_LAST_NAME as Patient_Name,
-floor(months_between(trunc(sysdate),patient.Date_of_Birth )/12) as age, Patient.gender,
-Diastolic_Blood_Pressure
-,Heart_Rate
-,Height_cms
-,Weight_kgs
-,Comments
-,Vitals_Date_Time
+floor(months_between(trunc(sysdate),patient.Date_of_Birth )/12) as age, 
+Patient.gender,
+Diastolic_Blood_Pressure,
+Heart_Rate,
+Height_cms,
+Weight_kgs,
+Comments,
+Vitals_Date_Time,
 FROM Patient_Records Patient, Patient_VitalSigns Vitals
 WHERE
 Vitals.patient_id = Patient.patient_id
@@ -78,4 +88,29 @@ from Patient_VitalSigns Vitals1
 where Vitals.patient_id =Vitals1.patient_id ) ORDER BY Vitals.patient_id;
 
 select * from PATIENT_VITALS;
+
+-------View patients treament details -------
+
+CREATE OR REPLACE VIEW PATIENT_TREATMENT AS
+SELECT patient.patient_id,
+Patient.PATIENT_FIRST_NAME || ' ' || Patient.PATIENT_LAST_NAME as Patient_Name,
+floor(months_between(trunc(sysdate),patient.Date_of_Birth )/12) as age, 
+Patient.gender,
+'Dr.' || doctor.doctor_first_name || ' ' || doctor.doctor_last_name as case_doctor,
+Treatment.Treatment,
+Treatment.Treatment_Start_Date,
+Treatment.Treatment_End_Date,
+Treatment.ongoing_flag,
+Treatment.Dose,
+Treatment.dose_units,
+Treatment.Treatment_Route,
+Treatment.Treatment_Frequency,
+Treatment.Remarks
+FROM Doctor_Records Doctor , Patient_Records Patient, Patient_Treatment Treatment
+WHERE
+Treatment.Patient_ID = Patient.Patient_id
+AND Treatment.Doctor_ID = Doctor.Doctor_id;
+
+select * from PATIENT_TREATMENT;
+
 
