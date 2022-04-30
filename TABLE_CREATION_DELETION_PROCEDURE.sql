@@ -253,25 +253,4 @@ CREATE TABLE Room_Details (
 	
 	
 	
------------------------DELETE DOCTOR RECORD----------------------------	
-	CREATE OR REPLACE PROCEDURE Remove_doctor (
-Doc_ID IN Doctor_Records.Doctor_ID%TYPE)
-IS
-BEGIN
-DELETE FROM DOCTOR_RECORDS WHERE Doctor_ID = Doc_ID;
-END;
-
-
-SELECT * FROM DOCTOR_RECORDS;
-
-EXECUTE Remove_doctor('DOC-107');
-
-
----------------DELETE PATIENT RECORD---------------
-CREATE OR REPLACE PROCEDURE Remove_patient (
-Pat_ID IN Patient_Records.Patient_ID%TYPE)
-IS
-BEGIN
-DELETE FROM patient_records WHERE Patient_ID = Pat_ID;
-END;
 
