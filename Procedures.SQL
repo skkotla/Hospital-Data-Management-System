@@ -1,4 +1,102 @@
+-------HIRE DOCTOR---------
+CREATE OR REPLACE PROCEDURE hire_doctor
+(
+Doctor_ID VARCHAR,
+--Department_ID VARCHAR,
+Doctor_First_Name VARCHAR
+,Doctor_Last_Name VARCHAR
+,Specialization VARCHAR
+,Designation VARCHAR
+,Doctor_Email VARCHAR
+,Doctor_Phone_No VARCHAR
+,Doctor_Charge INTEGER
+,Doctor_House_Street VARCHAR
+,Doctor_City VARCHAR
+,Doctor_State VARCHAR
+,Doctor_Country VARCHAR
+,Doctor_Zip_Code INTEGER
+,Doctor_Status VARCHAR
+)
+IS
+EMAIL_INC EXCEPTION;
+PHONE_INC EXCEPTION;
+department_id Varchar(7);
 
+
+BEGIN
+
+DBMS_OUTPUT.PUT_LINE('--------------------------------------------HIRING DOCTOR--------------------------------------------');
+
+
+BEGIN
+SELECT Department_ID INTO department_id FROM DEPARTMENT WHERE Department_ID = 'D-101';
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+DBMS_OUTPUT.PUT_LINE('Department - ' || department_id || ' is not present');
+RETURN;
+END;
+
+-- SELECT TO_NUMBER(TO_CHAR(sysdate,'yyyy')) INTO pyear FROM DUAL;
+
+IF NOT REGEXP_LIKE (Doctor_Email,'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$') THEN
+RAISE EMAIL_INC;
+ELSIF NOT REGEXP_LIKE (Doctor_Phone_No,'[[:digit:]]{10}') THEN
+RAISE PHONE_INC;
+
+ELSE
+INSERT INTO DOCTOR_RECORDS
+VALUES (
+
+Doctor_ID
+,Department_ID
+,Doctor_First_Name
+,Doctor_Last_Name
+,Specialization
+,Designation
+,Doctor_Email
+,Doctor_Phone_No
+,Doctor_Charge
+,Doctor_House_Street
+,Doctor_City
+,Doctor_State
+,Doctor_Country
+,Doctor_Zip_Code
+,Doctor_Status );
+
+DBMS_OUTPUT.PUT_LINE('DOCTOR - ' || DOCTOR_ID || ' successfully hired');
+COMMIT;
+END IF;
+EXCEPTION
+WHEN EMAIL_INC THEN
+DBMS_OUTPUT.PUT_LINE('Please enter correct email address');
+WHEN PHONE_INC THEN
+DBMS_OUTPUT.PUT_LINE('Please enter correct 10 digit phone number');
+
+
+END hire_doctor;
+
+SET SERVEROUTPUT ON;
+
+--EXECUTE hire_doctor('DOC-201','Sav','Siha','Gynecologists','Fellow','SavSiha@gmail.com',8796543210,300,'Ap #856-859','New York','NY','US',39531,'Available');
+
+EXECUTE hire_doctor('DOC-202','Nihal','Lee','Gynecologists','Fellow','NihalLee@gmail.com',8572079277,300,'Ap #896-859','New York','NY','US',39531,'Available');
+
+SELECT * FROM DOCTOR_RECORDS;
+
+-----------------------DELETE DOCTOR RECORD----------------------------	
+	CREATE OR REPLACE PROCEDURE Remove_doctor (
+Doc_ID IN Doctor_Records.Doctor_ID%TYPE)
+IS
+BEGIN
+DELETE FROM DOCTOR_RECORDS WHERE Doctor_ID = Doc_ID;
+END;
+
+
+SELECT * FROM DOCTOR_RECORDS;
+
+EXECUTE Remove_doctor('DOC-202');
+
+------------------UPDATE PATIENT RECORD---------------
 CREATE OR REPLACE PROCEDURE update_patient_information
 ( Pat_id IN VARCHAR
 ,Pat_First_Name IN VARCHAR
@@ -177,103 +275,6 @@ EXECUTE update_patient_information('PAT-117',	'Zhang',	'Wright',	'11-Nov-98'	,	'
 SELECT * FROM PATIENT_RECORDS;
 
 
--------HIRE DOCTOR---------
-CREATE OR REPLACE PROCEDURE hire_doctor
-(
-Doctor_ID VARCHAR,
---Department_ID VARCHAR,
-Doctor_First_Name VARCHAR
-,Doctor_Last_Name VARCHAR
-,Specialization VARCHAR
-,Designation VARCHAR
-,Doctor_Email VARCHAR
-,Doctor_Phone_No VARCHAR
-,Doctor_Charge INTEGER
-,Doctor_House_Street VARCHAR
-,Doctor_City VARCHAR
-,Doctor_State VARCHAR
-,Doctor_Country VARCHAR
-,Doctor_Zip_Code INTEGER
-,Doctor_Status VARCHAR
-)
-IS
-EMAIL_INC EXCEPTION;
-PHONE_INC EXCEPTION;
-department_id Varchar(7);
-
-
-BEGIN
-
-DBMS_OUTPUT.PUT_LINE('--------------------------------------------HIRING DOCTOR--------------------------------------------');
-
-
-BEGIN
-SELECT Department_ID INTO department_id FROM DEPARTMENT WHERE Department_ID = 'D-101';
-EXCEPTION
-WHEN NO_DATA_FOUND THEN
-DBMS_OUTPUT.PUT_LINE('Department - ' || department_id || ' is not present');
-RETURN;
-END;
-
--- SELECT TO_NUMBER(TO_CHAR(sysdate,'yyyy')) INTO pyear FROM DUAL;
-
-IF NOT REGEXP_LIKE (Doctor_Email,'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$') THEN
-RAISE EMAIL_INC;
-ELSIF NOT REGEXP_LIKE (Doctor_Phone_No,'[[:digit:]]{10}') THEN
-RAISE PHONE_INC;
-
-ELSE
-INSERT INTO DOCTOR_RECORDS
-VALUES (
-
-Doctor_ID
-,Department_ID
-,Doctor_First_Name
-,Doctor_Last_Name
-,Specialization
-,Designation
-,Doctor_Email
-,Doctor_Phone_No
-,Doctor_Charge
-,Doctor_House_Street
-,Doctor_City
-,Doctor_State
-,Doctor_Country
-,Doctor_Zip_Code
-,Doctor_Status );
-
-DBMS_OUTPUT.PUT_LINE('DOCTOR - ' || DOCTOR_ID || ' successfully hired');
-COMMIT;
-END IF;
-EXCEPTION
-WHEN EMAIL_INC THEN
-DBMS_OUTPUT.PUT_LINE('Please enter correct email address');
-WHEN PHONE_INC THEN
-DBMS_OUTPUT.PUT_LINE('Please enter correct 10 digit phone number');
-
-
-END hire_doctor;
-
-SET SERVEROUTPUT ON;
-
---EXECUTE hire_doctor('DOC-201','Sav','Siha','Gynecologists','Fellow','SavSiha@gmail.com',8796543210,300,'Ap #856-859','New York','NY','US',39531,'Available');
-
-EXECUTE hire_doctor('DOC-202','Nihal','Lee','Gynecologists','Fellow','NihalLee@gmail.com',8572079277,300,'Ap #896-859','New York','NY','US',39531,'Available');
-
-
-
------------------------DELETE DOCTOR RECORD----------------------------	
-	CREATE OR REPLACE PROCEDURE Remove_doctor (
-Doc_ID IN Doctor_Records.Doctor_ID%TYPE)
-IS
-BEGIN
-DELETE FROM DOCTOR_RECORDS WHERE Doctor_ID = Doc_ID;
-END;
-
-
-SELECT * FROM DOCTOR_RECORDS;
-
-EXECUTE Remove_doctor('DOC-107');
 
 
 ---------------DELETE PATIENT RECORD---------------
@@ -283,6 +284,12 @@ IS
 BEGIN
 DELETE FROM patient_records WHERE Patient_ID = Pat_ID;
 END;
+
+SET SERVEROUTPUT ON;
+
+EXECUTE Remove_patient('PAT-117');
+
+SELECT * FROM PATIENT_RECORDS;
 
 
 ---Show patient billing for a patient
