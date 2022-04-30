@@ -113,4 +113,28 @@ AND Treatment.Doctor_ID = Doctor.Doctor_id;
 
 select * from PATIENT_TREATMENT;
 
+-------View patients billing details -------
+CREATE OR REPLACE VIEW View_Patients_Billing AS
+SELECT
+patient.patient_id,
+Patient.PATIENT_FIRST_NAME || ' ' || Patient.PATIENT_LAST_NAME as Patient_Name,
+floor(months_between(trunc(sysdate),patient.Date_of_Birth )/12) as age, 
+Patient.gender,
+Invoice.Bill_ID,
+Payment_Date,
+Doctor_Charge,
+Nurse_Charge,
+Operation_Charge,
+Number_of_days,
+Room_Charge,
+Lab_Charge,
+Total_Billing
+
+FROM Patient_Records Patient, Patient_Invoice Invoice
+WHERE
+Invoice.Patient_ID = Patient.Patient_id
+
+
+select * from View_Patients_Billing;
+
 
