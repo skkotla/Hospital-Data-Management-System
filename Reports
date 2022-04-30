@@ -1,0 +1,8 @@
+SELECT 'Dr.' || doctor.Doctor_First_Name || ' ' || doctor.Doctor_Last_Name as DOCTOR, number_of_appointments 
+    FROM (
+SELECT count(1) as number_of_appointments, appointment.Doctor_Id  as app_doc_id
+    FROM Patient_Visit  appointment
+    group by appointment.Doctor_id
+    order by 1 desc),  Doctor_Records  doctor
+WHERE app_doc_id = doctor.Doctor_id
+AND ROWNUM < 2;
