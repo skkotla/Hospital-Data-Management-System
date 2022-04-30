@@ -271,3 +271,42 @@ DELETE FROM patient_records WHERE Patient_ID = Pat_ID;
 END;
 
 
+---Show patient billing for a patient
+CREATE OR REPLACE PROCEDURE Show_Patients_Billing
+(pat_id varchar)
+IS
+r_bill View_Patients_Billing%ROWTYPE;
+rcount NUMBER := 0;
+BEGIN
+FOR r_bill IN (SELECT * FROM View_Patients_Billing WHERE patient_id = pat_id)
+LOOP
+IF rcount = 0 THEN
+DBMS_OUTPUT.PUT_LINE('----------------------------------- Medical History for ' || r_bill.PATIENT_NAME || ' -----------------------------------');
+DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------------------------------------------');
+DBMS_OUTPUT.PUT_LINE('Age: ' || r_bill.age);
+DBMS_OUTPUT.PUT_LINE('Gender: ' || r_bill.gender);
+DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------------------------------------------');
+DBMS_OUTPUT.PUT_LINE('PAYMENT DATE | BILL ID | TOTAL CHARGE | PATIENT ID');
+END IF;
+DBMS_OUTPUT.PUT_LINE(r_bill.Payment_Date || ' | ' || RPAD(r_bill.Bill_ID,16,' ') || ' | ' || RPAD(r_bill.Total_Billing,26,' ') || ' | ' || r_bill.patient_id);
+rcount := 1;
+END LOOP;
+IF rcount = 0 THEN
+DBMS_OUTPUT.PUT_LINE('------------------------------- There is no bill for Patient ID - ' || pat_id || ' -------------------------------');
+END IF;
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(SQLERRM);
+END;
+/
+
+
+
+
+-- Show patient total billing 
+set SERVEROUTPUT ON;
+-- With incorrect patient id
+EXECUTE show_patients_billing('PAT-101');
+
+
+
