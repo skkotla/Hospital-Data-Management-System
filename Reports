@@ -26,7 +26,7 @@ group by Doctor.Doctor_First_Name || ' ' || Doctor.Doctor_Last_Name
 order by  2 desc;
 
 
-
+---Number of doctors in a department based on availability---
 SELECT Doctor.Specialization, COUNT(DISTINCT (Doctor.doctor_id)) as number_of_doctors
 FROM Doctor_Records Doctor
 WHERE Doctor.doctor_status= 'Available'
