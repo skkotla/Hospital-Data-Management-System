@@ -100,6 +100,7 @@ CREATE TABLE Doctor_Records (
 	,Doctor_State VARCHAR(25) NOT NULL
 	,Doctor_Country VARCHAR(25) NOT NULL
 	,Doctor_Zip_Code INTEGER NOT NULL
+	,Doctor_Status VARCHAR(25) NOT NULL
         ,CONSTRAINT check_doctor_phonenumbers CHECK(LENGTH(Doctor_Phone_No )=10)
         ,CONSTRAINT check_doctor_emails CHECK (REGEXP_LIKE (Doctor_Email , '^\w+(\.\w+)*+@\w+(\.\w+)+$') )
         ,CONSTRAINT check_doctor_zipcodes CHECK (LENGTH(Doctor_Zip_Code)=5)
