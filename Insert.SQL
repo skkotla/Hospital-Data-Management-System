@@ -48,14 +48,14 @@ SELECT * FROM STAFF;
 
 ----------Insert Doctor Records ----------------------
 
-insert into DOCTOR_RECORDS VALUES('DOC-100','D-101','Sarvesh','Sinha','Gynecologists','Fellow','SarveshSinha@gmail.com',6172347382,200,'Ap #867-859','New York','NY','US',39531);
-insert into DOCTOR_RECORDS VALUES('DOC-101','D-101','Olivia','Le','Neurologists','Specialist','OliviaLe@gmail.com',6099773234,500,'191-103 Jue Road','New York','NY','US',39531);
-insert into DOCTOR_RECORDS VALUES('DOC-102','D-101','Andrea','Germia','Cardiologists','Resident','AndreaG@gmail.com',6372347382,450,'887 Demonte Avenue','New York','NY','US',39531);
-insert into DOCTOR_RECORDS VALUES('DOC-103','D-101','Mia','Cova', 'Physician','Intern','CovaM@gmail.com',6117347382,400,'511-5762 At Rd.','New York','NY','United States',39531);
-insert into DOCTOR_RECORDS VALUES('DOC-104','D-101','Lee','Jamie','Dermatologists','Specialist','LeeJam@gmail.com',7172347382,500,'935-9940 Tortor. Street','New York','NY','United States',39531);
-insert into DOCTOR_RECORDS VALUES('DOC-105','D-101','Anushka','Shekhar','Pediatrics','Resident','ShekharA@gmail.com',6170345382,250,'250 P.O 929 4189 NuncRoad','New York','NY','United States',39531);
-insert into DOCTOR_RECORDS VALUES('DOC-106','D-101','John','Goetz','Cardiologist'	,'Surgeon','JGoetz@gmail.com',6179347181,350,'350 Viverra.Avenue','New York','NY','United States',39531);
-insert into DOCTOR_RECORDS VALUES('DOC-107','D-101','Thomas','Brook','Cardiologist'	,'Surgeon','TBrook@gmail.com',6172347311,300,'300 347-7666 Iaculis St.','New York','NY','United States',39531);
+insert into DOCTOR_RECORDS VALUES('DOC-100','D-101','Sarvesh','Sinha','Gynecologists','Fellow','SarveshSinha@gmail.com',6172347382,200,'Ap #867-859','New York','NY','US',39531,'Available');
+insert into DOCTOR_RECORDS VALUES('DOC-101','D-101','Olivia','Le','Neurologists','Specialist','OliviaLe@gmail.com',6099773234,500,'191-103 Jue Road','New York','NY','US',39531,'Available');
+insert into DOCTOR_RECORDS VALUES('DOC-102','D-101','Andrea','Germia','Cardiologists','Resident','AndreaG@gmail.com',6372347382,450,'887 Demonte Avenue','New York','NY','US',39531,'Available');
+insert into DOCTOR_RECORDS VALUES('DOC-103','D-101','Mia','Cova', 'Physician','Intern','CovaM@gmail.com',6117347382,400,'511-5762 At Rd.','New York','NY','United States',39531,'Available');
+insert into DOCTOR_RECORDS VALUES('DOC-104','D-101','Lee','Jamie','Dermatologists','Specialist','LeeJam@gmail.com',7172347382,500,'935-9940 Tortor. Street','New York','NY','United States',39531,'Available');
+insert into DOCTOR_RECORDS VALUES('DOC-105','D-101','Anushka','Shekhar','Pediatrics','Resident','ShekharA@gmail.com',6170345382,250,'250 P.O 929 4189 NuncRoad','New York','NY','United States',39531,'Available');
+insert into DOCTOR_RECORDS VALUES('DOC-106','D-101','John','Goetz','Cardiologist'	,'Surgeon','JGoetz@gmail.com',6179347181,350,'350 Viverra.Avenue','New York','NY','United States',39531,'Available');
+insert into DOCTOR_RECORDS VALUES('DOC-107','D-101','Thomas','Brook','Cardiologist'	,'Surgeon','TBrook@gmail.com',6172347311,300,'300 347-7666 Iaculis St.','New York','NY','United States',39531,' Not Available');
 
 SELECT * FROM DOCTOR_RECORDS;
 
