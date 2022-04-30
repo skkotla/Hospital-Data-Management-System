@@ -1,4 +1,4 @@
--------View for Doctors -------
+-------View for Doctors who are assigned to patients -------
 
 CREATE OR REPLACE VIEW View_Doctor AS
 SELECT 
@@ -26,3 +26,35 @@ AND Treatment.Patient_ID = Patient.Patient_id
 ORDER BY doctor.Doctor_ID ;
 
 select * from View_Doctor;
+
+
+-------View for Staff who are accomodated to patients -------
+
+CREATE OR REPLACE VIEW View_Staff AS
+SELECT 
+S.Staff_id,
+S.Staff_first_name || ' ' || S.Staff_last_name as Staff_Name,
+S.staff_role,
+S.staff_level,
+patient.patient_id,
+Patient.PATIENT_FIRST_NAME || ' ' || Patient.PATIENT_LAST_NAME as Patient_Name,  
+'Labs' as Test,
+Lab.Lab_Charge as Charge
+FROM Staff S  , Patient_Records Patient, Patient_Labtest Lab
+WHERE S.Staff_ID = lab.staff_id
+AND   Patient.patient_id = lab.patient_id
+UNION 
+SELECT 
+S.Staff_id,
+S.Staff_first_name || ' ' || S.Staff_last_name as Staff_Name,
+S.staff_role,
+S.staff_level,
+patient.patient_id,
+Patient.PATIENT_FIRST_NAME || ' ' || Patient.PATIENT_LAST_NAME as Patient_Name,  
+'Vitals' as Test,
+vitals.nurse_fee as Charge
+FROM Staff S  , Patient_Records Patient, patient_vitalsigns vitals
+WHERE S.Staff_ID = vitals.staff_id
+AND   Patient.patient_id = vitals.patient_id;
+
+Select * from View_Staff;
