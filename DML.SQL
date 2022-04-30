@@ -1,6 +1,7 @@
 
----Insert Patient Records---
-insert into PATIENT_RECORDS values(	'PAT-100',	'Rosella',	'Burks',	'5-Jan-90'	,	'F',	'White',	'Non - Hispanic/Latino',	9637774065	, 'BurksR@gmail.com',	'16C, Smith St',	'San Juan',	'PR',	'US',	92600,	'Patrica',	'Garrison',	8631113065	,'GarrisonP@gmail.edu',	'16C, Smith St',	'San Juan',	'PR',	'US',	92600	);
+-------------------INSERT PATIENT RECORDS-------------------------
+
+insert into PATIENT_RECORDS values(	'PAT-100',	'Rosella',	'Burks',	'5-Jan-90'	,	'F',	'White',	'Non - Hispanic/Latino',	9637774065	, 'BurksR@gmail.com',	'16C, Smith St',	'San Juan',	'PR',	'US',	92600,	'Patrica',	'Garrison',	8631113065	,'GarrisonP@gmail.edu',	'16C,Smith St',	'San Juan',	'PR',	'US',	92600	);
 insert into PATIENT_RECORDS values(	'PAT-101',	'Damien',	'Avila',	'6-Jan-91'	,	'M',	'White',	'Non - Hispanic/Latino',	9637777914,	'AvilaD@gmail.com',	'17A, Termont St',	'Corona',	'NY',	'US',	11368,	'Leila',	'Effie',	8631111813,	'EffieL@gmail.edu',	'17A, Termont St',	'Corona',	'NY',	'US',	11368	);
 insert into PATIENT_RECORDS values(	'PAT-102',	'Robin',	'Olsen',	'7-Jan-92'	,	'M',	'Asian American',	'Non - Hispanic/Latino',	9637779262,	'OlsenR@gmail.com',	'1, James St',	'Chicago',	'IL',	'US',	60629,	'Rose',	'Buckley',	8631118262,	'BuckleyR@gmail.edu',	'1, James St',	'Chicago',	'IL',	'US',	60629	);
 insert into PATIENT_RECORDS values(	'PAT-103',	'Edgar',	'Moises',	'7-Jan-93'	,	'M',	'Black or African American',	'Non - Hispanic/Latino',	9637778264,	'MoisesE@gmail.com',	'7A, Temont St',	'El Paso',	'TX',	'US',	79936,	'Kathie',	'Stanton',	8631118263,	'StantonK@gmail.edu',	'7A, Temont St',	'El Paso',	'TX',	'US',	79936	);
@@ -10,6 +11,51 @@ insert into PATIENT_RECORDS values(	'PAT-106',	'Edmund',	'Mosley',	'10-Jan-96'	,
 insert into PATIENT_RECORDS values(	'PAT-107',	'Antoine',	'Derek',	'10-Jan-97'	,	'M',	'White',	'Non - Hispanic/Latino',	9637775454,	'DerekA@gmail.com',	'8, James St',	'Ketchikan',	'AK',	'US',	99950,	'Ruben',	'Katheryn',	8631115353,	'KatherynR@gmail.edu',	'8, James St',	'Ketchikan',	'AK',	'US',	99950	);
 insert into PATIENT_RECORDS values(	'PAT-108',	'Callie',	'Hawkins',	'11-Jan-98'	,	'F',	'White',	'Non - Hispanic/Latino',	9637774949,	'HawkinsC@gmail.com',	'7A, Temont St',	'San Juan',	'PR',	'US',	92600,	'Dianne',	'Michael',	8631113838,	'MichaelD@gmail.edu',	'7A, Temont St',	'San Juan',	'PR',	'US',	92600	);
 
+
+SELECT * FROM PATIENT_RECORDS;
+
+---------------------INSERT DEPARTMENT RECORDS--------------------
+insert into DEPARTMENT VALUES('D-101','Doctor','Attends the patients');
+insert into DEPARTMENT VALUES('D-102','Staff','Hospitality management');
+
+--------------------INSERT DEPARTMENT RECORDS-------------------------
+SELECT * FROM DEPARTMENT;
+
+insert into STAFF VALUES('S-101','D-102','Suresh','Singh','Lab Assistant','Level1','SureshS@gmail.com',2312226999,'101 Michael Street' ,'Chicago','IL','US',90045);
+insert into STAFF VALUES('S-102','D-102','Simon','Lee','Compounder','Level1','Simlee@gmail.com',5612226999,'502 Haven Street' ,'Los Angeles','CA','US',92363);
+insert into STAFF VALUES('S-103','D-102','Andrew','Jose','Compounder','Level1','AndJos@gmail.com',4812226999,'201 Cambridge Street','San Juan','PR','US',21380);
+insert into STAFF VALUES('S-104','D-102','Adam','Jen','Nurse','Level1','AdamJen@gmail.com',4812226912,'1 Camel Street','Chicago','IL','US',95545);
+insert into STAFF VALUES('S-105','D-102','Bruce','Lee','Nurse','Level2','BruceLee@gmail.com',6812336912,'H-234, Jackson St','San Juan',	'PR',	'US',	92600);
+insert into STAFF VALUES('S-106','D-102','Zheng','Zhang','Nurse','Level3','ZhengZhang@gmail.com',7891226912,'16 Mission Hill', 'El Paso',	'TX',	'US',23123);
+insert into STAFF VALUES('S-107','D-102','Rasheed','Ahmed','Nurse','Level1','RasheedAhmed@gmail.com',7612226999,'2 Greek Street','Ketchikan','AK','US',21380);
+insert into STAFF VALUES('S-108','D-102','Angelina','Jenny','Nurse','Level1','AngelinaJenny@gmail.com',4814426912,'1 Park Street','Chicago','IL','US',21380);
+insert into STAFF VALUES('S-109','D-102','James','Jacob','Lab Assistant','Level2','JamesJacob@gmail.com',7812336912,'2, Peak St','San Juan',	'PR',	'US',	72600);
+insert into STAFF VALUES('S-110','D-102','Hitech','Reddy','Receptionist','Level1','HitechReddy@gmail.com',6089926912,'11 Mission Hill', 'Pacoima',	'CA',	'US',	91331);
+insert into STAFF VALUES('S-111','D-102','Michael','Costa', 'Lab Assistant','Level2',	'Miccos@gmail.com',9012226999,'201 Congress Street', 'El Paso', 'TX',	'US',	21389);
+insert into STAFF VALUES('S-112','D-102', 'Saurav','Dsouza', 'Lab Assistant', 'Level1',	'Saudso@gmail.com', 6612226999,	'105 Congress Street', 	'Corona', 'NY',	'US',	21380);
+
+
+SELECT * FROM STAFF;
+
+-----------------------------INSERT STAFF--------------------------
+insert into DOCTOR_RECORDS VALUES('DOC-100','D-101','Sarvesh','Sinha','Gynecologists','Intern','SarveshSinha@gmail.com',6172347382,200,'Ap #867-859','New York','NY','US',39531);
+insert into DOCTOR_RECORDS VALUES('DOC-101','D-101','Olivia','Le','Neurologists','Senior','OliviaLe@gmail.com',6099773234,500,'191-103 Jue Road','New York','NY','US',39531);
+insert into DOCTOR_RECORDS VALUES('DOC-102','D-101','Andrea','Germia','Cardiologists','Resident','AndreaG@gmail.com',6372347382,450,'887 Demonte Avenue','New York','NY','US',39531);
+insert into DOCTOR_RECORDS VALUES('DOC-103','D-101','Mia','Cova', 'Physician','Intern','Allech@gmail.com',6117347382,400,'511-5762 At Rd.','New York','NY','United States',39531);
+insert into DOCTOR_RECORDS VALUES('DOC-104','D-101','Lee','Jamie','Dermatologists','Specialist','LeeJ@gmail.com',7172347382,500,'935-9940 Tortor. Street','New York','NY','United States',39531);
+insert into DOCTOR_RECORDS VALUES('DOC-105','D-101','Anushka','Shekhar','Pediatrics','Resident','Kha@gmail.com',6170345382,250,'250 P.O 929 4189 NuncRoad','New York','NY','United States',39531);
+insert into DOCTOR_RECORDS VALUES('DOC-106','D-101','John','Goetz','Surgeon'	,'Pediatricians','SarahAl@gmail.com',6179347181,350,'350 Viverra.Avenue','New York','NY','United States',39531);
+insert into DOCTOR_RECORDS VALUES('DOC-107','D-101','Thomas','Brook','Surgeon'	,'Neurologists','Mariari@gmail.com',6172347311,300,'300 347-7666 Iaculis St.','New York','NY','United States',39531);
+
+SELECT * FROM DOCTOR_RECORDS;
+
+insert into PATIENT_INVOICE VALUES(	'BIL-100',	'PAT-100',	'12-Oct-22',200, 50,	0,	0,	0,1,	15, 132);
+insert into PATIENT_INVOICE VALUES(	'BIL-101',	'PAT-101',	'12-Jan-22',	300,	50,	0,	0,0,0, 15,	365	);
+insert into PATIENT_INVOICE VALUES(	'BIL-102',	'PAT-102',	'15-Jan-22',	450,	50,	0,	0,	0,0,	15	,	515	);
+insert into PATIENT_INVOICE VALUES(	'BIL-103',	'PAT-103',	'17-Jan-22',	400,	50,	0,	0,	0,	0,15,	232.5	);
+insert into PATIENT_INVOICE VALUES(	'BIL-104',	'PAT-104',	'18-Jan-22',	500,	50,	0,	0,	0,	1,15	,	282.5	);
+
+SELECT * FROM PATIENT_INVOICE;
 
 ---Insert PATIENT MEDICAL HISTORY---
 
@@ -23,6 +69,7 @@ insert into PATIENT_MEDICALHISTORY values(	'MH-106',	'PAT-106',	'Blood Pressure'
 insert into PATIENT_MEDICALHISTORY values(	'MH-107',	'PAT-107',	'Cough',	'Sour throat',	'20-May-20',	'N',	'19-Jun-20');	
 insert into PATIENT_MEDICALHISTORY values(	'MH-108',	'PAT-108',	'Cough',	'Sour throat',	'10-Sep-21',	'N',	'13-Oct-21');
 
+SELECT * FROM PATIENT_MEDICALHISTORY;
 
 --Insert PATIENT MEDICATION--
 
@@ -37,10 +84,72 @@ insert into PATIENT_MEDICATION values(	'MED-107',	'MH-100',	'PAT-107',	'Tylenol'
 insert into PATIENT_MEDICATION values(	'MED-108',	'MH-100',	'PAT-108',	'Tylenol',	87,	4,	'Oral',	2,	'12-Jan-22',	'21-Jan-22',	'N'	);
 
 
---Insert PATIENT INVOICE--
+SELECT * FROM PATIENT_MEDICATION;
 
-insert into PATIENT_INVOICE VALUES(	'BIL-100',	'PAT-100',	'12-Oct-22',200, 50,	0,	0,	0,1,	15, 132);
-insert into PATIENT_INVOICE VALUES(	'BIL-101',	'PAT-101',	'12-Jan-22',	300,	50,	0,	0,0,0, 15,	365	);
-insert into PATIENT_INVOICE VALUES(	'BIL-102',	'PAT-102',	'15-Jan-22',	450,	50,	0,	0,	0,0,	15	,	515	);
-insert into PATIENT_INVOICE VALUES(	'BIL-103',	'PAT-103',	'17-Jan-22',	400,	50,	0,	0,	0,	0,15,	232.5	);
-insert into PATIENT_INVOICE VALUES(	'BIL-104',	'PAT-104',	'18-Jan-22',	500,	50,	0,	0,	0,	1,15	,	282.5	);
+
+insert into PATIENT_VISIT values('V-001',	'PAT-100',	'DOC-101',	'Normal ',	'2-Jan-22');
+insert into PATIENT_VISIT values('V-002',	'PAT-101',	'DOC-102',	'Normal ',	'2-Jan-22');
+insert into PATIENT_VISIT values('V-003',	'PAT-102',	'DOC-103',	'Abnormal',	'5-Jan-22');
+insert into PATIENT_VISIT values('V-004',	'PAT-103',	'DOC-104',	'Abnormal',	'7-Jan-22');
+insert into PATIENT_VISIT values('V-005',	'PAT-104',	'DOC-107',	'Abnormal',	'8-Jan-22');
+insert into PATIENT_VISIT values('V-006',	'PAT-105',	'DOC-101',	'Normal ',	'10-Jan-22');
+insert into PATIENT_VISIT values('V-007',	'PAT-106',	'DOC-106',	'Abnormal',	'11-Jan-22');
+insert into PATIENT_VISIT values('V-008',	'PAT-107',	'DOC-102',	'Normal ',	'11-Jan-22');
+insert into PATIENT_VISIT values('V-009',	'PAT-108',	'DOC-103',	'Normal ',	'12-Jan-22');
+
+SELECT * FROM PATIENT_VISIT;
+
+insert into PATIENT_VITALSIGNS values(	'VS-0001',  'PAT-100',	'S-103',	'V-001',	120,	78,	74,	168,	67,	'Normal ',	50,	'12-Jan-22'	);
+insert into PATIENT_VITALSIGNS values(	'VS-0002', 'PAT-101',	'S-112',	'V-002',	115,	180,	70,	165,	54,	'Normal ',	50,	'14-Dec-19'	);
+insert into PATIENT_VITALSIGNS values(	'VS-0003', 'PAT-102',	'S-104',	'V-003',	95,	83,	76,	218,	54,	'Abnormal',	50,	'15-Dec-19'	);
+insert into PATIENT_VITALSIGNS values(	'VS-0004', 'PAT-103',	'S-106',	'V-004',	51,	75,	78,	190,	50,	'Abnormal',	50,	'16-Dec-19'	);
+insert into PATIENT_VITALSIGNS values(	'VS-0005', 'PAT-104',	'S-102',	'V-005',	94,	82,	71,	197,	88,	'Abnormal',	50,	'17-Dec-19'	);
+insert into PATIENT_VITALSIGNS values(	'VS-0006', 'PAT-105',	'S-110',	'V-006',	114,	87,	76,	213,	55,	'Normal ',	50,	'18-Dec-19'	);
+insert into PATIENT_VITALSIGNS values(	'VS-0007', 'PAT-106',	'S-110',	'V-007',	156,	100,	72,	194,	60,	'Abnormal',	50,	'19-Dec-19'	);
+insert into PATIENT_VITALSIGNS values(	'VS-0008', 'PAT-107',	'S-107',	'V-008',	119,	97,	78,	211,	123,	'Normal ',	50,	'20-Dec-19'	);
+insert into PATIENT_VITALSIGNS values(	'VS-0009', 'PAT-108',	'S-109',	'V-009',	123,	98,	76,	167,	77,	'Normal ',	50,	'21-Dec-19'	);
+
+SELECT * FROM PATIENT_VITALSIGNS;
+
+INSERT INTO PATIENT_LABTEST VALUES('T01','HEMATOLOGY – RBC','Measurement of red blood cell count','PAT-100','DOC-101','V-001','Normal','NA','ABC Diagnostic','S-110','2-Jan-2022','5-Jan-2022','15');
+INSERT INTO PATIENT_LABTEST VALUES('T02','HEMATOLOGY – RBC','Measurement of red blood cell count','PAT-101','DOC-107','V-002','Normal','NA','ABC Diagnostic','S-111','2-Jan-2022','7-Jan-2022','15');	
+INSERT INTO PATIENT_LABTEST VALUES('T03','HEMATOLOGY – RBC','Measurement of red blood cell count ','PAT-102','DOC-106','V-003','Abnormal','Low RBC Counts','ABC Diagnostic','S-112','5-Jan-2022','8-Jan-2022','15');
+INSERT INTO PATIENT_LABTEST VALUES('T04','HEMOGLOBIN','Measurement of hemoglobin in the blood','PAT-103','DOC-102','V-004','Abnormal','Low hemoglobin levels','ABC Diagnostic','S-103','7-Jan-2022','10-Jan-2022','15');					
+INSERT INTO PATIENT_LABTEST VALUES('T05','HEMOGLOBIN','Measurement of hemoglobin in the blood','PAT-104','DOC-105','V-005','Abnormal','Low hemoglobin levels','ABC Diagnostic','S-104','8-Jan-2022','11-Jan-2022','15');					
+INSERT INTO PATIENT_LABTEST VALUES('T06','GENERAL CHEMISTRY','Number of the body’s components','PAT-105','DOC-103','V-006','Normal','NA','ABC Diagnostic','S-110','10-Jan-2022','11-Jan-2022','15'); 					
+INSERT INTO PATIENT_LABTEST VALUES('T07','GENERAL CHEMISTRY','Number of the body’s components','PAT-106','DOC-101','V-007','Normal','NA','ABC Diagnostic','S-111','11-Jan-2022','12-Jan-2022','15'); 					
+INSERT INTO PATIENT_LABTEST VALUES('T08','URINE','Urine tests to diagnose metabolic and kidney disorder','PAT-107','DOC-104','V-008','Normal','NA','ABC Diagnostic','S-112','11-Jan-2022','13-Jan-2022','15'); 					
+INSERT INTO PATIENT_LABTEST VALUES('T09','URINE','Urine tests to diagnose metabolic and kidney disorder','PAT-108','DOC-107','V-009','Normal','NA','ABC Diagnostic','S-103','12-Jan-2022','14-Jan-2022','15'); 					
+
+
+SELECT * FROM PATIENT_LABTEST;
+
+INSERT INTO PATIENT_TREATMENT VALUES('T-100','PAT-100','DOC-101','V-001',       '12-Jan-2022',       '2-Jan-2022',      'N','Y',        'A',    394,    2,      'Oral',       2,        'N/A',   'Normal' ,     'N',0);
+INSERT INTO PATIENT_TREATMENT VALUES('T-101','PAT-101',	'DOC-103','V-002',	'12-Jan-2022',	'2-Jan-2022',	'N','Y',	'B',	274,	1,	'Injection'	,3,	'N/A'	,'Normal' ,	'N',0);
+INSERT INTO PATIENT_TREATMENT VALUES('T-102','PAT-102',	'DOC-105','V-003',	'15-Jan-2022',	'5-Jan-2022',	'N','Y',	'F',	238,	3,	'Injection',	1,	'N/A',	'Abnormal',	'N',0);
+INSERT INTO PATIENT_TREATMENT VALUES('T-103','PAT-103',	'DOC-102','V-004',	'17-Jan-2022',	'7-Jan-2022',	'N','Y',	'G',	234,	2,	'Oral',	3,	'N/A',	'Abnormal',	'N',0);
+INSERT INTO PATIENT_TREATMENT VALUES('T-104','PAT-104',	'DOC-107','V-005',	'18-Jan-2022',	'8-Jan-2022',	'N','Y',	'K',	182,	1,	'Oral',	2,	'N/A',	'Abnormal',	'N',	0);
+INSERT INTO PATIENT_TREATMENT VALUES('T-105','PAT-105',	'DOC-101','V-006',	'20-Jan-2022',	'10-Jan-2022',	'N','Y',	'A',	176,	3,	'Injection',	1,	'N/A',	'Normal', 	'N',	0);
+INSERT INTO PATIENT_TREATMENT VALUES('T-106','PAT-106',	'DOC-102','V-007',	'19-Jan-2022',	'11-Jan-2022',	'N','Y',	'B',	440,	2,	'Injection',	2,	'N/A',	'Normal', 	'N',	0);
+INSERT INTO PATIENT_TREATMENT VALUES('T-107','PAT-107',	'DOC-106','V-008',	'17-Jan-2022',	'11-Jan-2022',	'N','Y',	'F',	355,	1,	'Oral',	3,	'N/A',	'Normal',  'N',	0);
+INSERT INTO PATIENT_TREATMENT VALUES('T-108','PAT-108',	'DOC-104','V-009',	'18-Jan-2022',	'16-Jan-2022',	'N','Y',	'G',	279,	3,	'Oral',	1,	'N/A',	'Normal' 	,'Y',	400);
+INSERT INTO PATIENT_TREATMENT VALUES('T-109','PAT-103',	'DOC-103','V-001',	'20-Jan-2022',	'13-Jan-2022',	'N','N',	'K',	105,	2,	'Injection',	3,	'N/A',	'Normal', 	'Y'	,300);
+INSERT INTO PATIENT_TREATMENT VALUES('T-110','PAT-105',	'DOC-107','V-004',	'19-Jan-2022',	'14-Jan-2022',	'N','N',	'A',	281,	1,	'Injection',	2,	'N/A',	'Normal', 	'Y',	800);
+INSERT INTO PATIENT_TREATMENT VALUES('T-111','PAT-102',	'DOC-102','V-002',	'1-Feb-2022',	'15-Jan-2022',	'N','N',	'B',	420,	3,	'Oral',	1,	'N/A',	'Abnormal',	'Y'	,700);
+
+SELECT * FROM PATIENT_TREATMENT;
+
+INSERT INTO ROOM_DETAILS VALUES('R-101', 'PAT-101', 'V-009', '2-Jan-22', '6-Jan-22', '30', '5', '150','');
+INSERT INTO ROOM_DETAILS VALUES('R-102', 'PAT-108', 'V-001', '5-Jan-22', '7-Jan-22', '30', '3', '90','');
+INSERT INTO ROOM_DETAILS VALUES('R-103', 'PAT-101', 'V-006', '10-Jan-22', '14-Jan-22', '45', '5', '225','');
+INSERT INTO ROOM_DETAILS VALUES('R-104', 'PAT-102', 'V-002', '11-Jan-22', '14-Jan-22', '30', '4', '120','');
+INSERT INTO ROOM_DETAILS VALUES('R-105', 'PAT-104', 'V-007', '18-Jan-22', '23-Jan-22', '45', '6', '270','');
+INSERT INTO ROOM_DETAILS VALUES('R-106', 'PAT-105', 'V-008', '21-Jan-22', '24-Jan-22', '30', '4', '120','');
+INSERT INTO ROOM_DETAILS VALUES('R-107', 'PAT-107', 'V-004', '1-Feb-22', '8-Feb-22', '40', '8', '320','');
+INSERT INTO ROOM_DETAILS VALUES('R-108', 'PAT-106', 'V-006', '8-Feb-22', '11-Jan-22', '40', '4', '160','');
+INSERT INTO ROOM_DETAILS VALUES('R-109', 'PAT-107', 'V-003', '18-Feb-22', '20-Jan-22', '35', '3', '315','');
+INSERT INTO ROOM_DETAILS VALUES('R-110', 'PAT-104', 'V-009', '20-Feb-22', '26-Jan-22', '45', '7', '250','');
+INSERT INTO ROOM_DETAILS VALUES('R-111', 'PAT-103', 'V-005', '20-Feb-22', '', '45', '7', '250','');
+INSERT INTO ROOM_DETAILS VALUES('R-112', 'PAT-103', 'V-005', '20-Feb-22', '', '45', '7', '250','');
+INSERT INTO ROOM_DETAILS VALUES('R-113', 'PAT-103', 'V-005', '20-Feb-22', '', '65', '7', '250','');
+INSERT INTO ROOM_DETAILS VALUES('R-114', 'PAT-103', 'V-005', '20-Feb-22', '', '65', '7', '250','');
