@@ -132,7 +132,7 @@ Total_Billing
 
 FROM Patient_Records Patient, Patient_Invoice Invoice
 WHERE
-Invoice.Patient_ID = Patient.Patient_id
+Invoice.Patient_ID = Patient.Patient_id;
 
 
 select * from View_Patients_Billing;
