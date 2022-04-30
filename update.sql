@@ -19,3 +19,7 @@ update doctor_records set doctor_status = 'Not Available' where doctor_id='DOC-1
 update doctor_records set doctor_status = 'Available' where doctor_id='DOC-104';
 
 update doctor_records set doctor_status = 'Available' where doctor_id='DOC-105';
+
+
+update doctor_records set doctor_status = 'Available' where doctor_id='DOC-106';
+
