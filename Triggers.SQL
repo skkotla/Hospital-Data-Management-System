@@ -1,8 +1,8 @@
-CREATE TRIGGER Roomupdate
-AFTER UPDATE OF Room_End_Date ON Room_Details
+CREATE OR REPLACE TRIGGER Roomupdate
+AFTER INSERT
+ON Room_Details
 FOR EACH ROW
-WHEN (new.Room_End_Date IS NOT NULL)
 BEGIN
-INSERT INTO Room_Details (room_status)
-VALUES ( 'Occupied');
+UPDATE room set room_status = 'Occupied' WHERE room_id = :new.room_id;
+DBMS_OUTPUT.PUT_LINE('Room - ' || :new.room_id || ' is Occupied now - by update_room_sts_after_admission Trigger');
 END;
